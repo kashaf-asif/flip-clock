@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>16 Days Left – Flip Clock</title>
+  <style>
+    body {
+      background: #fdf0f0;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .clock-container {
+      display: flex;
+      gap: 10px;
+    }
+
+    .flip-box {
+      background: #fff;
+      border: 2px solid #ff6f91;
+      border-radius: 8px;
+      width: 80px;
+      height: 100px;
+      font-size: 48px;
+      color: #ff3366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      animation: flip 1s ease-in-out;
+    }
+
+    @keyframes flip {
+      0% { transform: rotateX(90deg); opacity: 0; }
+      100% { transform: rotateX(0); opacity: 1; }
+    }
+
+    .message {
+      margin-top: 30px;
+      font-size: 22px;
+      color: #c2185b;
+      text-align: center;
+      white-space: pre-wrap;
+      min-height: 30px;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="clock-container">
+    <div class="flip-box" id="digit1">1</div>
+    <div class="flip-box" id="digit2">6</div>
+  </div>
+
+  <div class="message" id="message"></div>
+
+  <script>
+    const message = "16 Days Until Two Hearts Sync Forever 🕰️❤️";
+    const messageContainer = document.getElementById("message");
+
+    let i = 0;
+    setTimeout(() => {
+      const typing = setInterval(() => {
+        messageContainer.textContent += message.charAt(i);
+        i++;
+        if (i >= message.length) clearInterval(typing);
+      }, 80);
+    }, 1500); // delay before message appears
+  </script>
+
+</body>
+</html>
